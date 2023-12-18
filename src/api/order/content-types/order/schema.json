@@ -16,13 +16,15 @@
       "type": "string"
     },
     "Order_id": {
-      "type": "string"
+      "type": "string",
+      "unique": true
     },
-    "price": {
+    "amount": {
       "type": "integer"
     },
     "product": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "status": {
       "type": "string"

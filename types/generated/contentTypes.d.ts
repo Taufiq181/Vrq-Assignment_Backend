@@ -375,9 +375,9 @@ export interface ApiOrderOrder extends Schema.CollectionType {
   };
   attributes: {
     UserName: Attribute.String;
-    Order_id: Attribute.String;
-    price: Attribute.Integer;
-    product: Attribute.String;
+    Order_id: Attribute.String & Attribute.Unique;
+    amount: Attribute.Integer;
+    product: Attribute.String & Attribute.Required;
     status: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -403,16 +403,21 @@ export interface ApiProductProduct extends Schema.CollectionType {
     singularName: 'product';
     pluralName: 'products';
     displayName: 'Product';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    slug: Attribute.String;
     category: Attribute.String;
-    price: Attribute.Integer;
+    price: Attribute.Integer & Attribute.Required;
     image_url: Attribute.String;
-    Available_qty: Attribute.Integer;
+    Available_qty: Attribute.Integer &
+      Attribute.Required &
+      Attribute.DefaultTo<0>;
+    name: Attribute.String & Attribute.Required;
+    Productid: Attribute.Integer & Attribute.Unique;
+    description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
